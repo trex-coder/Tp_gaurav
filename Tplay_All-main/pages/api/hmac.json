@@ -1,0 +1,17 @@
+{
+  "type": "TATAPLAY HMAC API",
+  "author": "Team CodeCrafters",
+  "community": "https://t.me/realcodecrafters",
+  "data": {
+    "hmac": {
+      "hdnea": {
+        "value": "hdnea=exp=1714498412~acl=/*~hmac=ff2c9b6856108b87ed80c30cc1b58c39182589708b4c80d65b6d62a02a22fc1a",
+        "validity": "Unlimited"
+      },
+      "hdtl": {
+        "value": "hdntl=exp=1714584212~acl=%2f*~data=hdntl~hmac=4fd8d81646f0fd572f34cacafadb728475c75be36d49e483f360b1f258b5c3c1",
+        "validity": "Unlimited"
+      }
+    }
+  }
+}
