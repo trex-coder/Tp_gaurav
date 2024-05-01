@@ -67,7 +67,7 @@ const getUserChanDetails = async (userChannels) => {
     
     // Return or use obj as needed
     console.log(obj);
-};
+
 
     
 
