@@ -41,33 +41,35 @@ const getAllChans = async () => {
 
 const getUserChanDetails = async (userChannels) => {
     let hmacValue;
-    let obj = { err: null, list: [] };
-
-    let obj = {}; // Initialize obj outside the try-catch block if needed
-
-try {
-    const response = await fetch("hmac.json");
-    if (!response.ok) {
-        throw new Error('Network response was not ok');
-    }
-    const data = await response.json();
-    console.log(data); // Do something with the JSON data
+    let obj = { err: null, list: [] }; // Initialize obj outside the try-catch block
 
     try {
-        const data = await response.json(); // Move this line inside the outer try block
-        const hmacValue = data.data.hmac.hdnea.value; // Declare hmacValue using const
-        console.log('HMAC Value:', hmacValue); // Log hmacValue or use it as needed
+        const response = await fetch("hmac.json");
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        console.log(data); // Do something with the JSON data
+    
+        try {
+            const data = await response.json(); // Move this line inside the outer try block
+            const hmacValue = data.data.hmac.hdnea.value; // Declare hmacValue using const
+            console.log('HMAC Value:', hmacValue); // Log hmacValue or use it as needed
+        } catch (error) {
+            console.error('Error fetching and rearranging HMAC data:', error);
+            obj.err2 = error; // Modify obj properties based on the catch block
+        }
+    
     } catch (error) {
-        console.error('Error fetching and rearranging HMAC data:', error);
-        obj.err = error;
-        return obj; // Assuming this code is within an async function
+        console.error('Error fetching JSON:', error);
+        obj.err1 = error; // Modify obj properties based on the catch block
     }
+    
+    // Return or use obj as needed
+    console.log(obj);
+};
 
-} catch (error) {
-    console.error('Error fetching JSON:', error);
-    obj.err = error;
-    return obj; // Assuming this code is within an async function
-}
+    
 
     while (userChannels.length > 0) {
         const chanIdsStr = userChannels.splice(0, 999).map(x => x.id).join(',');
